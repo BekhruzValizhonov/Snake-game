@@ -49,9 +49,10 @@ class Snake:
       if self.direction == DOWN:
         print('portal to up')
       if self.direction == LEFT:
-        print('portal to right')
+        print(x,y)
+        self.snake.append((400, self.snake[len(self.snake) - 1][1]))
       if self.direction == RIGHT:
-        print('portal to lef')
+        self.snake.append((0, self.snake[len(self.snake) - 1][1]))
 
   def wall_collision(self):
     return self.snake[len(self.snake) - 1][0] >= 400 or self.snake[len(self.snake) - 1][0] < 0 or \
