@@ -20,6 +20,7 @@ def main():
   while run:
     clock.tick(SPEED)
     snake.craw()
+    snake.snake_portal()
 
     for e in pygame.event.get():
       if e.type == pygame.QUIT:
@@ -43,7 +44,7 @@ def main():
       snake.snake_bigger()
       SPEED += 1
 
-    if snake.self_collision() or snake.wall_collision():
+    if snake.self_collision():
       run = False
 
     screen.fill((0, 0, 0))
