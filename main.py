@@ -3,12 +3,14 @@ from pygame import KEYDOWN
 from apple import Apple
 from snake import *
 
-# TODO so that he could go beyond the limit and come back out from the opposite side of the wall
-# TODO show Score
+
+# TODO so that he could go beyond the limit and come back out from the opposite side of the wall -> Done
+# TODO show Score -> Done
 # TODO pause game 'p' button
+
 def main():
   SPEED = 15
-
+  score = 0
   pygame.init()
   screen = pygame.display.set_mode((400, 400))
   snake = Snake()
@@ -43,6 +45,7 @@ def main():
       apple.set_random_position()
       snake.snake_bigger()
       SPEED += 1
+      score += 10
 
     if snake.self_collision():
       run = False
@@ -54,6 +57,7 @@ def main():
 
     screen.blit(snake.head, snake.snake[-1])
     screen.blit(apple.apple, apple.position)
+    screen.blit(snake.snake_score(score), (5, 5))
     pygame.display.update()
 
   pygame.quit()
